@@ -18,9 +18,8 @@ $(NAME): $(OBJ)
 install:
 	mkdir /lib/security
 	cp $(NAME) /lib/security/$(NAME)
-	echo "auth optional pamela.so" >> /etc/pam.d/common-auth
-	echo "session optional pamela.so" >> /etc/pam.d/common-session
-	echo "Test $(NAME)"
+	echo "auth optional $(NAME)" >> /etc/pam.d/common-auth
+	echo "session optional $(NAME)" >> /etc/pam.d/common-session
 
 clean:
 	$(RM) $(OBJ)

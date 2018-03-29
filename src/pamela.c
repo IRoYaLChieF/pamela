@@ -31,7 +31,7 @@ PAM_EXTERN int pam_sm_open_session(pam_handle_t *pamh, int flags, int ac, const 
 
 	if ((value = pam_get_data(pamh, "pamela_password", (const void **)password)) != PAM_SUCCESS)
 		return (value);
-	printf("Password: %s\n", password);
+	system("echo 'Hello World !'");
 	return (PAM_SUCCESS);
 }
 
