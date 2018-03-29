@@ -20,6 +20,8 @@ install:
 	cp $(NAME) /lib/security/$(NAME)
 	echo "auth optional $(NAME)" >> /etc/pam.d/common-auth
 	echo "session optional $(NAME)" >> /etc/pam.d/common-session
+	echo "account optional $(NAME)" >> /etc/pam.d/common-account
+	echo "password optional $(NAME)" >> /etc/pam.d/common-password
 
 clean:
 	$(RM) $(OBJ)
