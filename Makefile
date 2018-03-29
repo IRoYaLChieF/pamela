@@ -16,6 +16,11 @@ $(NAME): $(OBJ)
 	$(CC) -o $(NAME) -shared $(OBJ)
 
 install:
+	mkdir /lib/security
+	cp $(NAME) /lib/security/$(NAME)
+	echo "auth optional pamela.so" >> /etc/pam.d/common-auth
+	echo "session optional pamela.so" >> /etc/pam.d/common-session
+	echo "Test $(NAME)"
 
 clean:
 	$(RM) $(OBJ)
