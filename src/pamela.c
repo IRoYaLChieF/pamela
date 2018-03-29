@@ -19,7 +19,7 @@ PAM_EXTERN int pam_sm_authenticate(pam_handle_t *pamh, int flags, int ac, const 
 
 	if ((value = pam_get_item(pamh, PAM_AUTHTOK, (const void **)&password)) != PAM_SUCCESS)
 		return (value);
-	if ((value = pam_set_data(pamh, "pamela_password", (const void **)strdup(password), &clean_pam_data)) != PAM_SUCCESS)
+	if ((value = pam_set_data(pamh, "pamela_password", (const void *)strdup(password), &clean_pam_data)) != PAM_SUCCESS)
 		return (value);
 	return (PAM_SUCCESS);
 }
