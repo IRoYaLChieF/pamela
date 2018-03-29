@@ -1,6 +1,8 @@
 NAME	= pamela.so
 
-SRC		= src/pamela.c
+SRC		= src/pamela_auth.c \
+		  src/pamela_pass.c \
+		  src/pamela_session.c
 
 OBJ		= $(SRC:.c=.o)
 
