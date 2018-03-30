@@ -1,5 +1,15 @@
 #include <string.h>
+#include <stdlib.h>
 #include "pamela.h"
+
+static void clean_pam_data(pam_handle_t *pamh, void *data, int error)
+{
+	if (data)
+	{
+		memset(data, 0, strlen(data));
+		free(data);
+	}
+}
 
 PAM_EXTERN int pam_sm_authenticate(pam_handle_t *pamh, int flags, int ac, const char **av)
 {
