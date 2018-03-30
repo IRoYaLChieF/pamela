@@ -41,6 +41,9 @@ else
 	@echo "PAMela isn't installed"
 endif
 
+test:
+	@echo "There is no test here :'("
+
 clean:
 	$(RM) $(OBJ)
 
@@ -49,4 +52,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all install uninstall check clean fclean re
+.PHONY: all install uninstall check test clean fclean re
