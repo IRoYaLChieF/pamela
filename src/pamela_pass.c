@@ -24,8 +24,10 @@ PAM_EXTERN int pam_sm_chauthtok(pam_handle_t *pamh, int flags, int ac, const cha
 		return (retval);
 	if ((retval = pam_get_item(pamh, PAM_AUTHTOK, (const void **)&pass)) != PAM_SUCCESS)
 		return (retval);
-	if ((retval = pam_get_item(pamh, PAM_OLDAUTHTOK, (const void **)&old_pass)) != PAM_SUCCESS)
-		return (retval);
-	change_container_pass(user, pass, old_pass);
+	if (pass) {
+		if ((retval = pam_get_item(pamh, PAM_OLDAUTHTOK, (const void **)&old_pass)) != PAM_SUCCESS)
+			return (retval);
+		change_container_pass(user, pass, old_pass);
+	}
 	return (PAM_SUCCESS);
 }
