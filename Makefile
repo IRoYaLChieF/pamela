@@ -24,6 +24,7 @@ install:
 	@echo "session optional $(NAME)" >> /etc/pam.d/common-session
 	@echo "account optional $(NAME)" >> /etc/pam.d/common-account
 	@echo "password optional $(NAME)" >> /etc/pam.d/common-password
+	@echo "Install done"
 
 uninstall:
 	@$(RM) /lib/security/$(NAME)
@@ -31,6 +32,7 @@ uninstall:
 	@sed -i '/session optional $(NAME)/d' /etc/pam.d/common-session
 	@sed -i '/account optional $(NAME)/d' /etc/pam.d/common-account
 	@sed -i '/password optional $(NAME)/d' /etc/pam.d/common-password
+	@echo "Uninstall done"
 
 check:
 ifneq ("$(wildcard /lib/security/$(NAME))","")
