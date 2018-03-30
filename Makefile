@@ -1,5 +1,7 @@
 NAME	= pamela.so
 
+PATH	= /lib/security/$(NAME)
+
 SRC		= src/pamela_auth.c \
 		  src/pamela_pass.c \
 		  src/pamela_session.c
@@ -33,7 +35,7 @@ uninstall:
 	sed -i '/password optional $(NAME)/d' /etc/pam.d/common-password
 
 check:
-	ifneq ("$(wildcard /lib/security/$(NAME))","")
+	ifneq ("$(wildcard $(PATH))","")
 		echo "PAMela is installed"
 	else
 		echo "PAMela isn't installed"
