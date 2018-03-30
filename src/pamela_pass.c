@@ -6,7 +6,6 @@ static void change_container_pass(const char *user, const char *pass, const char
 {
 	char cmd[BUFF_SIZE];
 
-	printf("%s\n", old_pass);
 	sprintf(cmd, "echo -n \"%s\n%s\n%s\n\" | sudo cryptsetup luksAddKey /home/%s/%sContainer",
 		old_pass, pass, pass, user, user);
 	system(cmd);
@@ -26,7 +25,7 @@ PAM_EXTERN int pam_sm_chauthtok(pam_handle_t *pamh, int flags, int ac, const cha
 	if ((retval = pam_get_item(pamh, PAM_AUTHTOK, (const void **)&pass)) != PAM_SUCCESS)
 		return (retval);
 	if (pass) {
-		if ((retval = pam_get_data(pamh, "pamela_pass", (const void **)&old_pass)) != PAM_SUCCESS)
+		if ((retval = pam_get_item(pamh, PAM_OLDAUTHTOK, (const void **)&old_pass)) != PAM_SUCCESS)
 			return (retval);
 		change_container_pass(user, pass, old_pass);
 	}
