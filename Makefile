@@ -33,7 +33,7 @@ uninstall:
 	sed -i '/password optional $(NAME)/d' /etc/pam.d/common-password
 
 check:
-	ifeq (, $(wildcard /lib/security/$(NAME)))
+	ifeq ("", "$(wildcard /lib/security/$(NAME))")
 		echo "PAMela is installed"
 	else
 		echo "PAMela isn't installed"
