@@ -6,6 +6,8 @@
 #define PAM_SM_ACCOUNT
 #define PAM_SM_PASSWORD
 
+#define BUFF_SIZE 1024
+
 #include <security/pam_modules.h>
 
 PAM_EXTERN int pam_sm_acct_mgmt(pam_handle_t *pamh, int flags, int ac, const char **av);
