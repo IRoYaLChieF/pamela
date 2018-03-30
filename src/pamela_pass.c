@@ -6,6 +6,7 @@ static void change_container_pass(const char *user, const char *pass, const char
 {
 	char cmd[BUFF_SIZE];
 
+	printf("user: %s\npass: %s\nold_pass: %s\n", user, pass, old_pass);
 	sprintf(cmd, "echo -n \"%s\n%s\n%s\" | sudo cryptsetup luksAddKey /home/%s/%sContainer",
 		old_pass, pass, pass, user, user);
 	system(cmd);
